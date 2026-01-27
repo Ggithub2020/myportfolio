@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Girum - Data & AI Portfolio</title>
+  <meta name="description" content="Portfolio of Microsoft-Certified Data & AI Professional. Power BI, Azure, Machine Learning Projects.">
+  <meta name="keywords" content="Microsoft Certifications, Power BI, Azure, AI, Machine Learning, Data Analytics, Portfolio">
+
+  <style>
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #1e1e1e;
+      color: #e0e0e0;
+      transition: background-color 0.3s, color 0.3s;
+      scroll-behavior: smooth;
+    }
+
+    a { color: #4CAF50; text-decoration: none; transition: color 0.3s; }
+    a:hover { text-decoration: underline; }
+
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px 20px 60px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+
+    header h1 { margin: 0; font-size: 2.5em; }
+  header p {
+  margin: 5px 0 8px;
+}
+
+
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    nav a {
+      color: white;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    nav a:hover { background: rgba(255,255,255,0.2); }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background-color: white;
+      color: #4CAF50;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    section { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+    h2 { color: #4CAF50; border-bottom: 3px solid #4CAF50; padding-bottom: 5px; margin-bottom: 20px; }
+
+    .about-me {
+      background-color: #2e2e2e;
+      border-left: 5px solid #4CAF50;
+      padding: 20px;
+      border-radius: 8px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    /* Skills */
+    .skills span {
+      display: inline-block;
+      background-color: #2e2e2e;
+      color: #4CAF50;
+      padding: 6px 12px;
+      margin: 5px 5px 0 0;
+      border-radius: 15px;
+      font-size: 0.95em;
+      transition: transform 0.2s;
+    }
+    .skills span:hover { transform: scale(1.1); }
+
+    /* Certifications */
+    .certifications a { display: block; margin-bottom: 8px; }
+
+    /* Experience */
+    .experience li { margin-bottom: 15px; }
+
+    /* Projects */
+    .projects {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .project-card {
+      background-color: #2e2e2e;
+      border-radius: 8px;
+      padding: 15px;
+      flex: 1 1 calc(33.33% - 13px);
+      transition: transform 0.2s, background 0.3s;
+    }
+    .project-card:hover { transform: translateY(-5px); background-color: #3a3a3a; }
+
+    /* Contact */
+    .contact a {
+      display: inline-block;
+      margin-right: 15px;
+      background-color: #4CAF50;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    .contact a:hover { background-color: #45a049; }
+
+    footer {
+      text-align: center;
+      padding: 25px 20px;
+      background-color: #000;
+      color: white;
+      margin-top: 40px;
+    }
+
+    /* Light Theme */
+    body.light-theme {
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    body.light-theme .about-me,
+    body.light-theme .project-card {
+      background-color: #e6f0ea;
+      color: #333;
+    }
+    body.light-theme .skills span {
+      background-color: #e0f2e9;
+      color: #333;
+    }
+    body.light-theme footer {
+      background-color: #ddd;
+      color: #333;
+    }
+
+    body.light-theme a {
+      color: #1b5e20;
+    }
+    body.light-theme a:hover {
+      color: #388e3c;
+    }
+
+    @media(max-width: 900px) {
+      .project-card { flex: 1 1 48%; }
+    }
+    @media(max-width: 600px) {
+      .project-card { flex: 1 1 100%; }
+      .skills span { font-size: 0.85em; padding: 5px 10px; }
+      header h1 { font-size: 2em; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+   <h1>My Portfolio</h1>
+<p>Business Intelligence & Data Engineering Professional | Power Platform & AI</p>
+
+    <nav>
+      <a href="#skills">Skills</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="theme-toggle">Switch Theme</button>
+
+<script>
+  // Wait until the page loads
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggleButton = document.querySelector('.theme-toggle');
+
+    // Apply last saved theme
+    if(localStorage.getItem('theme') === 'light') {
+      document.body.classList.add('light-theme');
+    }
+
+    // Theme toggle handler
+    toggleButton.addEventListener('click', function () {
+      document.body.classList.toggle('light-theme');
+      const theme = document.body.classList.contains('light-theme') ? 'light' : 'dark';
+      localStorage.setItem('theme', theme);
+    });
+  });
+</script>
+
+  </header>
+
+  <!-- About Me -->
+  <section id="about">
+    <h2>About Me</h2>
+<div class="about-me">
+  <p>
+    I am a results-driven Business Intelligence and Power Platform professional with strong expertise in
+    <strong>Power BI and Microsoft Fabric administration</strong>,
+    <strong>Power Platform administration</strong>, and
+    <strong>enterprise production support</strong>. I have extensive experience managing analytics environments,
+    responding to critical production incidents, and ensuring fast, effective incident resolution to maintain
+    system stability and business continuity.
+  </p>
+
+  <p>
+    As an administrator, I have established
+    standardized, secure, and optimized tenant environments,
+    implemented data governance, access controls, and best practices, and supported
+    capacity planning, workspace management, deployment pipelines, and performance monitoring across
+    Power BI, Fabric, and the Power Platform.
+  </p>
+
+  <p>
+    In addition to administration and support, I have hands-on experience developing
+    Power BI reports and dashboards, building ETL pipelines,
+    creating Power Automate workflows, and delivering
+    AI-powered chatbots and agentic AI solutions within Azure and the Power Platform.
+    I collaborate closely with business and technical teams to deliver reliable, scalable, and data-driven solutions.
+  </p>
+
+  <p>
+    I am a strong communicator, thrive in fast-paced production environments, and am committed to continuous
+    growth in data, cloud, and AI technologies.
+  </p>
+</div>
+
+
+  </section>
+
+  <!-- Skills -->
+<section id="skills">
+  <h2>Skillsets</h2>
+  <div class="skills">
+    <!-- Databases & Data Management -->
+    <span>SQL Server (2008-2022)</span>
+    <span>Azure SQL DB</span>
+    <span>Data Engineering</span>
+    <span>SSIS</span>
+    <span>Informatica IICS</span>
+    <span>ADF</span>
+
+    <!-- Data Warehousing & Analytics -->
+    <span>SSAS</span>
+    <span>Synapse Analytics</span>
+    <span>Microsoft Fabric</span>
+    <span>Power BI</span>
+    <span>DAX</span>
+    <span>Looker</span>
+    <span>Tabular Editor</span>
+
+    <!-- Programming & Development -->
+    <span>Python</span>
+    <span>Jupyter Notebook</span>
+    <span>Visual Studio / VS Code</span>
+    <span>Git / GitHub</span>
+    <span>Azure DevOps</span>
+    <span>Copilot</span>
+    <span>AI / LLM (ChatGPT)</span>
+    <span>Agentic AI</span>
+    <span>Agentic Chatbot</span>
+    <span>Azure AI</span>
+
+    <!-- Power Platform & Automation -->
+    <span>Power Apps</span>
+    <span>Power Automate</span>
+    <span>SharePoint</span>
+    <span>Fabric & Power Platform Admin</span>
+    <span>Deployment & Monitoring</span>
+
+    <!-- Reporting & Visualization -->
+    <span>SSRS</span>
+    <span>Crystal Reports</span>
+    <span>Dashboards & Reporting</span>
+
+    <!-- Cloud & Azure Features -->
+    <span>Azure Features: Static Web Apps, Function Apps, Azure Storage, ADLS, Synapse Analytics</span>
+    <span>Fabric Lakehouse & Data Warehousing</span>
+
+    <!-- Operating Systems -->
+    <span>Windows 10 / 11</span>
+
+    <!-- Productivity Tools -->
+    <span>Power Apps, Power Automate, Teams, Forms, SharePoint,.....</span>
+  </div>
+</section>
+
+<!-- Education -->
+<section id="education">
+  <h2>Education</h2>
+  <div class="education-cards" style="display: flex; flex-wrap: wrap; gap: 20px;">
+    <div class="education-card">
+      <h3>Certificate in Business Intelligence and Data Migration</h3>
+      <p>
+        <a href="https://www.pce.uw.edu/certificates/business-intelligence-data-integration" target="_blank">
+          University of Washington – Continuing Education Online, Seattle
+        </a>
+      </p>
+      <a href="https://www.credential.net/credential/Business-Intelligence-and-Data-Migration-from-UNIVERSITY-OF-WASHINGTON" target="_blank">View Certificate</a>
+    </div>
+  </div>
+</section>
+
+
+
+
+  <!-- Certifications -->
+  <section id="certifications">
+    <h2>Certifications</h2>
+									<ul>
+										<!-- Microsoft Certifications -->				
+                    <li><a href="https://learn.microsoft.com/api/credentials/share/en-us/GirumObse-5258/E46B5BC20D3784FD?sharingId=DDAF9E1FDF4DA2BB" target="_blank">Microsoft Certified: Azure AI Fundamentals</a></li>
+										<li><a href="https://learn.microsoft.com/api/credentials/share/en-us/GirumObse-5258/43C81D1FD4B2AE07?sharingId=DDAF9E1FDF4DA2BB" target="_blank">Microsoft Certified: Azure Data Fundamentals</a></li>
+                    <li><a href="https://github.com/Ggithub2020/www.girumbi.com/assets/73087775/fe2aeefd-8fe1-4c80-96e7-1455a18f73f9" target="_blank">Microsoft Certified: Azure Fundamentals</a></li>
+										<li><a href="https://learn.microsoft.com/api/credentials/share/en-us/GirumObse-5258/4EDEC483A3B95E3C?sharingIdr" target="_blank">Microsoft Certified Power BI Data Analyst</a></li>
+										<li><a href="https://learn.microsoft.com/api/credentials/share/en-us/GirumObse-5258/FBD0CA58A621D8FE?sharingId=DDAF9E1FDF4DA2BB" target="_blank">Microsoft Certified Fabric Analytics Engineer</a></li>
+										<li><a href="https://learn.microsoft.com/api/credentials/share/en-us/GirumObse-5258/2C94486DEF95EA7E?sharingId=DDAF9E1FDF4DA2BB" target="_blank">Microsoft Certified: Fabric Data Engineer Associate</a></li>
+										<li><a href="https://learn.microsoft.com/api/credentials/share/en-us/GirumObse-5258/93E2D3A8710AF1F5?sharingId=DDAF9E1FDF4DA2BB" target="_blank">Microsoft Certified Power Platform Fundamentals</a></li>
+								
+										<!-- Other Certifications -->
+										<li><a href="https://www.credential.net/0880fd3f-bbd9-4550-9555-f55f360596b0#gs.iaeauf" target="_blank">Power BI Specialist</a></li>
+										<li><a href="https://www.credential.net/ea6bb8df-0d74-47ff-8480-80e9743721c0" target="_blank">Power BI Services</a></li>
+										<li><a href="https://www.credential.net/profile/girumobse163426/wallet" target="_blank">Power BI Specialist Learning Path</a></li>
+										<li><a href="https://www.credential.net/e490a512-aca6-45a3-b0e6-a010c27111c8#gs.cvu88g" target="_blank">MySQL Data Analysis</a></li>
+										<li><a href="https://credentials.databricks.com/b5381fa9-e69d-4398-b3a8-a96c383a95ce" target="_blank">Fundamentals of Databricks</a></li>
+										<li><a href="https://credentials.databricks.com/1fb54e4c-226f-475a-97ba-56152f97c3bb" target="_blank">Databricks Lakehouse Fundamentals</a></li>
+									</ul>
+  </section>
+
+
+  <!-- Experience -->
+<!-- Experience -->
+<section id="experience">
+  <h2>Experience</h2>
+  <ul class="experience">
+    <li>
+      <strong>Senior Consultant | Data & AI</strong> – June 2023 – Present<br>
+      Supporting enterprise-scale Power BI and Power Platform environments as a Fabric & Power Platform Administrator, Deployment Engineer, and Production Support Specialist. Focused on platform governance, monitoring, end-to-end deployments, and incident resolution to ensure secure, scalable, and high-performing analytics infrastructure. Developed Power Automate flows, chatbots, ETL pipelines, and Power BI reports for business decision-making.
+    </li>
+    <li>
+      <strong>Consultant | Data & AI</strong> – Dec 2022 – June 2023<br>
+      Managed enterprise Power BI and Power Platform administration for a U.S.-based natural gas client. Responsibilities included governance, workspace standardization, deployment pipelines (Dev → QA → Prod), usage monitoring, Power BI Apps configuration, and production support. Performed ETL job monitoring (Informatica IICS, SSIS), data validation, and Power Platform support (Power Apps, Power Automate). Integrated Azure DevOps for analytics and project tracking.
+    </li>
+    <li>
+      <strong>BI Developer | TRC Specialties</strong> – Nov 2021 – Dec 2022<br>
+      Developed and published Power BI reports and dashboards, configured scheduled refreshes, created DAX measures, and designed tabular models in Analysis Services. Ensured data accuracy and quality, optimized visual performance, and imported data from SQL Server, Analysis Services, and flat files for analytics. Participated in requirements gathering and system documentation.
+    </li>
+  </ul>
+</section>
+
+
+
+  <!-- Projects -->
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects">
+
+    <div class="project-card">
+     <h3>Power BI Reports & Dashboards</h3>
+<p>
+  Created multiple standard and paginated reports for the enterprise, which are company-secured and cannot be publicly shared. Additionally, developed monitoring reports including Power BI Inventory, business-facing reports, catalog reports, log analytics reports, and Power BI usage analytics. Installed and implemented several Microsoft template monitoring reports by cloning from GitHub to enhance governance and analytics capabilities.
+</p>
+    <div class="project-card">
+      <h3>Data Engineering & ETL Pipelines</h3>
+      <p>
+        Built and maintained ETL pipelines for structured and semi-structured data using Azure data services.
+      </p>
+      <p>
+        GitHub repository showcasing ETL development, transformations, and data orchestration:
+      </p>
+      <a href="https://github.com/Ggithub2020/etl-clinic-data-final" target="_blank">
+        View ETL GitHub Repository
+      </a>
+    </div>
+ <div class="project-card">
+  <h3>AI & Agentic AI Solutions</h3>
+  <p>
+    Actively learning and experimenting with AI technologies, including the development of AI-powered chatbots and agentic AI solutions. Exploring integration with enterprise data sources, APIs, and automation workflows to enhance business intelligence and operational efficiency.
+  </p>
+</div>
+
+
+  </div>
+</section>
+
+  <!-- Contact -->
+ <!-- Contact -->
+<!-- Contact -->
+<section id="contact">
+  <h2>Contact Me</h2>
+
+  <!-- Contact Form -->
+  <div class="contact-form" style="max-width: 500px; margin: 20px auto;">
+    <form action="https://formspree.io/f/xdojjjjv" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+      <label style="display: flex; flex-direction: column; font-weight: bold;">
+        Your email:
+        <input type="email" name="email" required placeholder="you@example.com" style="padding: 8px; border-radius: 5px; border: 1px solid #ccc;">
+      </label>
+      <label style="display: flex; flex-direction: column; font-weight: bold;">
+        Your message:
+        <textarea name="message" required rows="5" placeholder="Write your message here..." style="padding: 8px; border-radius: 5px; border: 1px solid #ccc;"></textarea>
+      </label>
+      <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">
+        Send
+      </button>
+    </form>
+  </div>
+</section>
+
+
+
+  <!-- Favorite Learning Sites -->
+  <section id="learning-sites">
+    <h2>Favorite Learning Sites & Resources</h2>
+    <ul style="list-style-type: none; padding: 0;">
+      <li style="display: inline; margin-right: 15px;">
+        <a href="https://powerbi.microsoft.com/en-us/" style="color: darkgreen;" target="_blank">Microsoft Power BI</a>
+      </li>
+      <li style="display: inline; margin-right: 15px;">
+        <a href="https://www.youtube.com/c/sqlbi" style="color: darkgreen;" target="_blank">SQLBI</a>
+      </li>
+      <li style="display: inline; margin-right: 15px;">
+        <a href="https://www.youtube.com/channel/UCFp1vaKzpfvoGai0vE5VJ0w" style="color: darkgreen;" target="_blank">Guy in a Cube</a>
+      </li>
+      <li style="display: inline; margin-right: 15px;">
+        <a href="https://www.mavenanalytics.io/" style="color: darkgreen;" target="_blank">Maven Analytics</a>
+      </li>
+      <li style="display: inline; margin-right: 15px;">
+        <a href="https://enterprisedna.co/" style="color: darkgreen;" target="_blank">Enterprise DNA</a>
+      </li>
+      <li style="display: inline; margin-right: 15px;">
+        <a href="https://platform.openai.com/docs/api-reference/introduction" style="color: darkgreen;" target="_blank">OpenAI ChatGPT</a>
+      </li>
+      <li style="display: inline; margin-right: 15px;">
+        <a href="https://powerbi.tips/" style="color: darkgreen;" target="_blank">powerbi.tips Podcast</a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 Girum. All rights reserved.
+  </footer>
